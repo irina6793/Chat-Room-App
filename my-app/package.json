@@ -1,12 +1,8 @@
 {
-  "name": "bloc-chat",
+  "name": "my-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
-    "firebase": "^5.0.4",
-=======
->>>>>>> 132fe8ac303d382eb9539d62038f445dab5f32fe
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-scripts": "1.1.4"
@@ -17,8 +13,4 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 132fe8ac303d382eb9539d62038f445dab5f32fe
