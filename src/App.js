@@ -13,16 +13,20 @@ var config = {
 };
 firebase.initializeApp(config);
 
-class App extends Component {
+class RoomList extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        </div>
+        <main>
+           <Route exact path="/" component={Landing} />
+           <Route path="/RoomList" component={RoomList} />
+         </main>
+         </div>
     );
   }
 }
 
-export default App;
+export default RoomList;
