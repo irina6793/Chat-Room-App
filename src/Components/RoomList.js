@@ -6,7 +6,7 @@ class RoomList extends Component {
 
     this.state = {
       rooms: []
-    };
+    }
     this.roomsRef = this.props.firebase.database().ref('rooms');
   }
 
@@ -20,11 +20,18 @@ class RoomList extends Component {
 
    render() {
      return (
-       <div className="RoomList">
-       <h1>Room List </h1>
+       <div className = 'rooms'>
+       <h1> Welcome to Bloc Chat </h1>
+       <ul>
+       {
+         this.state.rooms.map((rooms, i) => {
+
+         })
+       }
+       </ul>
        </div>
-     );
-   }
- }
+        );
+       }
+     }
 
  export default RoomList;
