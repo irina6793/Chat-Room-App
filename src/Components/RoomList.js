@@ -24,8 +24,12 @@ class RoomList extends Component {
        <h1> Welcome to Bloc Chat </h1>
        <ul>
        {
-         this.state.rooms.map((rooms, i) => {
-
+         this.state.room.map((room, i) => {
+        return (
+          <li key = {i}>
+          {room}
+          </li>
+        )
          })
        }
        </ul>
