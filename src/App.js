@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import * as firebase from 'firebase';
-import {RoomList} from './components/RoomList';
+import RoomList from './components/RoomList';
 
 var config = {
   apiKey: "AIzaSyAX6rztCaKXSxIpmfXfsa7bhBbjHXKAYMo",
@@ -18,9 +18,13 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+        <RoomList
+        />
           <h1 className="Room-List">Welcome to Chat Rooms</h1>
+
         </header>
          </div>
+
     );
   }
 }
