@@ -18,7 +18,8 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-        <RoomList
+        <RoomList firebase={firebase}
+
         />
           <h1 className="Room-List">Welcome to Chat Rooms</h1>
 
