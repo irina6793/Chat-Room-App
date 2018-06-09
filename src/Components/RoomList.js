@@ -8,7 +8,10 @@ class RoomList extends Component {
       rooms: []
     }
     this.roomsRef = this.props.firebase.database().ref('Rooms');
-  }
+    this.roomsRef.push({
+      name: newRoomName
+   });
+     }
 
   componentDidMount() {
        this.roomsRef.on('child_added', snapshot => {
@@ -19,9 +22,20 @@ class RoomList extends Component {
        });
      }
 
+  newRoomName() {
+
+  }
+
    render() {
      return (
        <div className = 'rooms'>
+       <form className = 'rooms-form'>
+       <fieldset>
+       <legend>newRoomName</legend>
+       <input type = 'text' placeholder ='Name' />
+       <button type = 'submit' className='rooms-button rooms-button-primary'>Add</button>
+       </fieldset>
+       </form>
        <ul>
        {
          this.state.rooms.map((room, i) => {
