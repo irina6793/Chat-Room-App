@@ -22,8 +22,8 @@ class RoomList extends Component {
   }
 
   createRoom(newRoomName) {
+      name: newRoomName,
       this.roomsRef.push({
-      name: this.state.newRoomName,
       newRoomName: "0",
       })
     }
@@ -39,10 +39,10 @@ class RoomList extends Component {
    render() {
      return (
        <div className = 'rooms'>
-       <form onSubmit={this.createRoom(newRoomName)}>
+       <form onSubmit={this.createRoom(this.state.newRoomName)}>
          <label>
          Room:
-         <input type = 'text' name = 'room' />
+         <input type = 'text' value={this.state.newRoomName} onChange={} />
          </label>
          <button type ='submit' className ='btn btn-primary'>Submit</button>
         </form>
