@@ -46,37 +46,27 @@ class RoomList extends Component {
      return (
        <div className = 'rooms'>
        <legend>newRoomName</legend>
-       <form onSubmit={e => {
-
-       }
-
-       }
-
-
-       {this.handleSubmit}>
-       <label>
-       <input
-         type = 'text'
-         onChange={this.handleChange}
-         value={this.state.newRoomName}
-         />
+       <form onSubmit ={this.handleSubmit}>
+         <label>
+         Room:
+         <input type = 'text' name = 'room' />
          </label>
-       <button type = 'submit' value='Submit'>Add</button>
-       </form>
-       <ul>
-       {
-         this.state.rooms.map((room, i) => {
-        return (
-          <li key ={i}>
-          {room}
-          </li>
-        )
-         })
+         <input type ='submit' Value = 'Submit' />
+         </form>
+         <ul>
+         {
+           this.state.rooms.map((room, i) => {
+          return (
+            <li key ={i}>
+            {room}
+            </li>
+          )
+           })
+         }
+         </ul>
+         </div>
+          );
+         }
        }
-       </ul>
-       </div>
-        );
-       }
-     }
 
- export default RoomList;
+   export default RoomList;
