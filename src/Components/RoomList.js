@@ -46,7 +46,14 @@ class RoomList extends Component {
      return (
        <div className = 'rooms'>
        <legend>newRoomName</legend>
-       <form onSubmit={this.handleSubmit}>
+       <form onSubmit={e => {
+
+       }
+
+       }
+
+
+       {this.handleSubmit}>
        <label>
        <input
          type = 'text'
