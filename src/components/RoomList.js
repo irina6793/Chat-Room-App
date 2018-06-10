@@ -22,16 +22,11 @@ class RoomList extends Component {
   }
 
   createRoom(newRoomName) {
-    const roomsRef = firebase.database().ref('rooms');
-    const room = {
+      this.roomsRef.push({
       name: this.state.newRoomName,
+      newRoomName: "0",
+      })
     }
-     this.roomsRef.push({
-       this.createRoom({
-         name: newRoomName,
-         newRoomName: "0",
-       })
-  }
 
   handleChange(e) {
     const target = e.target
@@ -44,7 +39,7 @@ class RoomList extends Component {
    render() {
      return (
        <div className = 'rooms'>
-       <form onSubmit={this.createRoom}>
+       <form onSubmit={this.createRoom(newRoomName)}>
          <label>
          Room:
          <input type = 'text' name = 'room' />
