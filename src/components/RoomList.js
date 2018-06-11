@@ -40,7 +40,7 @@ class RoomList extends Component {
        <form onSubmit={this.createRoom(this.state.newRoomsName)}>
          <label>
          Room:
-         <input type = 'text' value={this.state.newRoomsName} onChange={this.handleChange().bind(this)} />
+         <input type = 'text' value={this.state.newRoomsName} onChange={this.handleChange.bind(this)} />
          </label>
          <button type ='submit' className ='btn btn-primary'>Submit</button>
         </form>
