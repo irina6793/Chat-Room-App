@@ -4,14 +4,14 @@ import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
 
 var config = {
-   apiKey: "AIzaSyDAiBjJjlWbzgzaSuw2uV8w9BDpVEJW8Lw",
-   authDomain: "bloc-chat-40f73.firebaseapp.com",
-   databaseURL: "https://bloc-chat-40f73.firebaseio.com",
-   projectId: "bloc-chat-40f73",
-   storageBucket: "bloc-chat-40f73.appspot.com",
-   messagingSenderId: "18347634207"
- };
-firebase.initializeApp(config);
+    apiKey: "AIzaSyAznF2GHVzfH2N1-mf_-wB1JJuO1e3H8QY",
+    authDomain: "bloc-chat-a977e.firebaseapp.com",
+    databaseURL: "https://bloc-chat-a977e.firebaseio.com",
+    projectId: "bloc-chat-a977e",
+    storageBucket: "bloc-chat-a977e.appspot.com",
+    messagingSenderId: "99045457457"
+  };
+  firebase.initializeApp(config);
 
 class App extends Component {
   render() {

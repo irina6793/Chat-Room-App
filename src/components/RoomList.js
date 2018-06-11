@@ -6,32 +6,30 @@ class RoomList extends Component {
 
     this.state = {
       rooms: [],
-      newRoomName: '',
+      newRoomsName: '',
 
     }
     this.handleChange = this.handleChange.bind(this);
     this.createRoom = this.createRoom.bind(this);
-    this.roomsRef = this.props.firebase.database().ref('Rooms');
+    this.roomsRef = this.props.firebase.database().ref('rooms');
    }
 
-  componentDidMount() {
+  componentDidUpdate() {
        this.roomsRef.on('child_added', snapshot => {
-       const room = snapshot.val();
-       this.setState({ rooms: this.state.rooms.concat( room ) });
+       const rooms = snapshot.val();
+       this.setState({ rooms: this.state.rooms.concat( rooms ) });
      });
   }
 
   createRoom(newRoomName) {
-      name: newRoomName,
       this.roomsRef.push({
-      newRoomName: "0",
+      name: newRoomName,
       })
     }
 
   handleChange(e) {
-    const target = e.target
-    const name = target.name
-    this.setState({
+      const target = e.target
+      this.setState({
       [e.target.name]: e.target.value
     });
   }
@@ -39,10 +37,10 @@ class RoomList extends Component {
    render() {
      return (
        <div className = 'rooms'>
-       <form onSubmit={this.createRoom(this.state.newRoomName)}>
+       <form onSubmit={this.createRoom(this.state.newRoomsName)}>
          <label>
          Room:
-         <input type = 'text' value={this.state.newRoomName} onChange={} />
+         <input type = 'text' value={this.state.newRoomsName} onChange={this.handleChange().bind(this)} />
          </label>
          <button type ='submit' className ='btn btn-primary'>Submit</button>
         </form>
@@ -51,7 +49,7 @@ class RoomList extends Component {
            this.state.rooms.map((room, i) => {
           return (
             <li key ={i}>
-            {room}
+            {room.name}
             </li>
           )
            })
