@@ -19,7 +19,7 @@ class RoomList extends Component {
    }
 
    handleSubmit(e) {
-        e.preventDefault();
+        event.preventDefault();
         if (!this.state.newRoomsName) { return }
         const rooms = { description: this.state.newRoomsName, isCompleted: false };
         this.setState({ rooms: [...this.state.rooms], newRoomsName: '' });
@@ -34,7 +34,6 @@ class RoomList extends Component {
 
   createRoom(newRoomName) {
       this.setState({value: ''});
-
       this.roomsRef.push({
       name: newRoomName,
       })
