@@ -19,11 +19,9 @@ class RoomList extends Component {
    }
 
    handleSubmit(e) {
-        event.preventDefault();
-        if (!this.state.newRoomsName) { return }
-        const rooms = { description: this.state.newRoomsName, isCompleted: false };
-        this.setState({ rooms: [...this.state.rooms], newRoomsName: '' });
-    }
+        e.preventDefault();
+        if (this.state.newRoomsName) { return }
+  }
 
   componentDidMount() {
        this.roomsRef.on('child_added', snapshot => {
@@ -42,7 +40,7 @@ class RoomList extends Component {
    render() {
      return (
        <div className = 'rooms'>
-       <form onSubmit={() => this.createRoom(this.state.newRoomsName)}>
+       <form onSubmit={() => this.handleSubmit(this.state.newRoomsName)}>
          <label>
          Room:
          <input type = 'text' value={this.state.newRoomsName} onChange={this.handleChange.bind(this)} />
