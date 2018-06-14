@@ -20,7 +20,7 @@ class RoomList extends Component {
 
    handleSubmit(e) {
         e.preventDefault();
-        if (this.state.newRoomsName) { return }
+        if (this.state.newRoomsName) { this.setState }
   }
 
   componentDidMount() {
@@ -42,15 +42,12 @@ class RoomList extends Component {
        <div className = 'rooms'>
        <form onSubmit={ (e) => this.handleSubmit(e) }>
          <input type="text" value={this.state.newRoomsName} onChange={this.handleChange.bind(this)} />
-        <input type="submit" />
-
-         <label>
+       <input type='submit'>
+       <label>
          Room:
-
-         </label>
+        </label>
          <span> {this.state.description} </span>
-         <button onClick = {this.state.handleChange}>Submit</button>
-        </form>
+       </form>
          <ul>
          {
            this.state.rooms.map((room, i) => {
@@ -58,13 +55,12 @@ class RoomList extends Component {
             <li key ={i}>
             {room.name}
             </li>
-          )
-           })
-         }
          </ul>
          </div>
+       )
+        })
+      }
           );
          }
-       }
 
    export default RoomList;
