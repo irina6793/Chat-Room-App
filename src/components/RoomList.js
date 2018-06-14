@@ -37,15 +37,6 @@ class RoomList extends Component {
           });
   }
 
-  /*createRoom(newRoomName) {
-      this.setState({newRoomsName: ''});
-
-      this.roomsRef.push({
-      name: newRoomName,
-      })
-    }
-    */
-
    render() {
      return (
        <div className = 'rooms'>
