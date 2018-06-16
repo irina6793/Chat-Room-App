@@ -8,13 +8,12 @@ class MessageList extends Component {
       username: '',
       messages: [],
       message: ''
+  }
 
-    }
     this.handleChange = this.handleChange.bind(this);
     this.roomsRef = this.props.firebase.database().ref('messages');
-  
-
-   }
+    
+  }
 
    handleSubmit(e) {
      e.preventDefault();
@@ -24,7 +23,7 @@ class MessageList extends Component {
      }
      this.props.onMessageSubmit(message);
      this.setState({ text : ''});
-   },
+   }
 
    handleChange(e) {
      this.setState({text: e.target.value});
