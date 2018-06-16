@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
 
-{
-    username: "<USERNAME HERE>",
-    content: "<CONTENT OF THE MESSAGE HERE>",
-    sentAt: "<TIME MESSAGE WAS SENT HERE>",
-    roomId: "<ROOM UID HERE>"
-}
-
 class MessageList extends Component {
   constructor(props) {
     super(props);
@@ -19,6 +12,8 @@ class MessageList extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.roomsRef = this.props.firebase.database().ref('messages');
+  
+
    }
 
    handleSubmit(e) {
