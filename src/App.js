@@ -31,9 +31,9 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
         <h1 className="Room-List">Welcome to Chat Rooms</h1>
-        <Message-List messages= {this.state.messages}/>
         </header>
         <RoomList firebase={firebase}/>
+        <MessageList firebase={firebase}/>
          </div>
      );
   }

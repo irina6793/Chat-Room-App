@@ -15,18 +15,8 @@ class MessageList extends Component {
 
   }
 
-   handleSubmit(e) {
-     e.preventDefault();
-     var message = {
-       user: this.props.user,
-       text: this.state.text
-     }
-     this.props.onMessageSubmit(message);
-     this.setState({ text : ''});
-   }
-
    handleChange(e) {
-     this.setState({text: e.target.value});
+     this.setState({message: e.target.value});
    }
 
    componentDidMount() {
@@ -39,7 +29,7 @@ class MessageList extends Component {
   render() {
     return (
       <div className = 'messages'>
-      <input type="text" value={this.state.message} onChange={this.handleChange.bind(this)} />
+      <input type="message" value={this.state.message} onChange={this.handleChange.bind(this)} />
       <form onSubmit={ (e) => this.handleSubmit(e) }>
       <button type="submit">Submit</button>
       <label>
@@ -51,16 +41,16 @@ class MessageList extends Component {
           {
              this.state.messages.map((message, i) => {
                return (
-                <div>
-                  {message.username}
-                </div>
+                <li>
+                  {message.content} : {message.roomId} : {message.username} : {message.sentAt}
+
+                </li>
            )
-        }
-    });
+        })
+    }
          </ul>
        </div>
     )
 }
-
-
+}
 export default MessageList;
