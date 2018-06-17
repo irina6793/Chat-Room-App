@@ -49,17 +49,18 @@ class MessageList extends Component {
         </form>
         <ul>
           {
-            this.state.messages.map((message, i) => {
-              username={message.username},
-              content={message.content},
-              sentAt={message.sentAt},
-              roomId={message.roomId}
-      })
-    }
-          </ul>
+             this.state.messages.map((message, i) => {
+               return (
+                <div>
+                  {message.username}
+                </div>
+           )
+        }
+    });
+         </ul>
        </div>
     )
 }
-}
+
 
 export default MessageList;
