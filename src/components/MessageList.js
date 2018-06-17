@@ -11,6 +11,7 @@ class MessageList extends Component {
   }
 
     this.handleChange = this.handleChange.bind(this);
+
     this.messagesRef = this.props.firebase.database().ref('messages');
 
   }
@@ -43,7 +44,7 @@ class MessageList extends Component {
                return (
                 <li>
                   {message.content} : {message.roomId} : {message.username} : {message.sentAt}
-
+                  activeRoom={this.state.activeRoom}
                 </li>
            )
         })

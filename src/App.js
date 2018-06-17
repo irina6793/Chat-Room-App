@@ -19,9 +19,14 @@ class App extends Component {
     super(props)
     this.state ={
       message: [],
-      room: []
+      room: [],
+      activeRoom: ''
     }
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  setRoom(room){
+    this.setState({activeRoom: room.target.value})
   }
 
   handleChange(e) {
@@ -35,7 +40,9 @@ class App extends Component {
         <h1 className="Room-List">Welcome to Chat Rooms</h1>
         </header>
         <RoomList firebase={firebase}/>
-        <MessageList firebase={firebase}/>
+        <MessageList firebase={firebase}
+          activeRoom={this.state.activeRoom}
+        />
          </div>
      );
   }

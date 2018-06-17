@@ -50,9 +50,11 @@ class RoomList extends Component {
          {
            this.state.rooms.map((room, i) => {
           return (
-            <li onClick= {this.handleClick}>
+            <li onClick= {this.handleChange(this.props.setRoom(room))}>
               key ={i.this}>
               {room.name}
+              activeRoom={this.state.activeRoom}
+
            </li>
           )
      })
