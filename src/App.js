@@ -22,15 +22,11 @@ class App extends Component {
       room: [],
       activeRoom: ''
     }
-    this.handleChange = this.handleChange.bind(this);
+    this.setRoom = this.setRoom.bind(this);
   }
 
   setRoom(room){
     this.setState({activeRoom: room.target.value})
-  }
-
-  handleChange(e) {
-    this.setState({room: e.target.value});
   }
 
   render() {

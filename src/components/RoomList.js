@@ -13,8 +13,8 @@ class RoomList extends Component {
     this.roomsRef = this.props.firebase.database().ref('rooms');
    }
 
-   handleChange(e) {
-     this.setState({newRoomsName: e.target.value});
+   handleChange(rooms) {
+     this.setState({newRoomsName: rooms.target.value});
    }
 
    handleSubmit(e) {
@@ -50,7 +50,7 @@ class RoomList extends Component {
          {
            this.state.rooms.map((room, i) => {
           return (
-            <li onClick= {this.handleChange(room)}>
+            <li onClick= {this.handleChange}>
               key ={i.this}>
               {room.name}
               activeRoom={this.state.activeRoom}
