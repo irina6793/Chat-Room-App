@@ -10,7 +10,6 @@ class RoomList extends Component {
 
     }
     this.handleChange = this.handleChange.bind(this);
-
     this.roomsRef = this.props.firebase.database().ref('rooms');
    }
 
@@ -24,11 +23,10 @@ class RoomList extends Component {
      {
        this.setState({newRoomsName: ''});
        this.roomsRef.push({
-         name: this.state.newRoomsName,
+       name: this.state.newRoomsName,
        })
      }
-
-  }
+}
 
   componentDidMount() {
        this.roomsRef.on('child_added', snapshot => {
@@ -52,9 +50,10 @@ class RoomList extends Component {
          {
            this.state.rooms.map((room, i) => {
           return (
-            <li key ={i}>
-            {room.name}
-            </li>
+            <li onClick= {this.handleClick}>
+              key ={i.this}>
+              {room.name}
+           </li>
           )
      })
    }

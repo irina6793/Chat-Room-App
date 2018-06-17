@@ -18,12 +18,14 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state ={
-      room : [
-        { body: "Connecting..."},
-        { author: "You", body: "Hello", me: true},
-        { author: "Them", body: "Hi" },
-      ]
+      message: [],
+      room: []
     }
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({room: e.target.value});
   }
 
   render() {
