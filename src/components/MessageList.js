@@ -30,7 +30,7 @@ class MessageList extends Component {
   render() {
     return (
       <div className = 'messages'>
-      <input type="message" value={this.state.message} onChange={this.handleChange.bind(this)} />
+      <input type="text" value={this.state.message} onChange={this.handleChange.bind(this)} />
       <form onSubmit={ (e) => this.handleSubmit(e) }>
       <button type="submit">Submit</button>
       <label>
@@ -44,7 +44,7 @@ class MessageList extends Component {
                return (
                 <li>
                   {message.content} : {message.roomId} : {message.username} : {message.sentAt}
-                  activeRoom={this.state.activeRoom}
+                  {this.setRoom}
                 </li>
            )
         })

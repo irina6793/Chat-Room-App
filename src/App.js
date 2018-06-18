@@ -26,8 +26,8 @@ class App extends Component {
   }
 
   setRoom(room){
-    this.setState({activeRoom: room.target.value})
-  }
+      this.setState({activeRoom: room})
+    }
 
   render() {
     return (
@@ -36,10 +36,11 @@ class App extends Component {
         <h1 className="Room-List">Welcome to Chat Rooms</h1>
         </header>
         <RoomList firebase={firebase}/>
-        <MessageList firebase={firebase}
-          activeRoom={this.state.activeRoom}
-          setRoom={this.setRoom}
-        />
+        <MessageList firebase={firebase}  {activeRoom} setRoom={this.setRoom} />
+
+
+
+
          </div>
      );
   }
