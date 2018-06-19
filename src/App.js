@@ -35,12 +35,8 @@ class App extends Component {
         <header className="App-header">
         <h1 className="Room-List">Welcome to Chat Rooms</h1>
         </header>
-        <RoomList firebase={firebase}/>
-        <MessageList firebase={firebase}  {activeRoom} setRoom={this.setRoom} />
-
-
-
-
+        <RoomList firebase={firebase} activeRoom={this.activeRoom} setRoom={this.setRoom} />
+        <MessageList firebase={firebase} />
          </div>
      );
   }

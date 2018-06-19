@@ -20,6 +20,22 @@ class MessageList extends Component {
      this.setState({message: e.target.value});
    }
 
+   handleSubmit(e) {
+     e.preventDefault();
+     if (this.state.message)
+     {
+
+
+       this.messagesRef.push({
+       username: this.state.message,
+       content: this.state.message,
+       sentAt: this.state.message,
+       roomId: this.state.message,
+       })
+       this.setState({message: ''});
+     }
+   }
+
    componentDidMount() {
         this.messagesRef.on('child_added', snapshot => {
         const messages = snapshot.val();
@@ -36,15 +52,15 @@ class MessageList extends Component {
       <label>
         Messages:
        </label>
-        <span> {this.state.description} </span>
+       <span> {this.state.description} </span>
         </form>
         <ul>
           {
              this.state.messages.map((message, i) => {
                return (
-                <li>
+                <li key={i} >
                   {message.content} : {message.roomId} : {message.username} : {message.sentAt}
-                  {this.setRoom}
+                  
                 </li>
            )
         })
