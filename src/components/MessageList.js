@@ -24,13 +24,13 @@ class MessageList extends Component {
      e.preventDefault();
      if (this.state.message)
      {
-
+console.log(this.props.activeRoom)
 
        this.messagesRef.push({
-       username: this.state.message,
+       username: this.state.username,
        content: this.state.message,
-       sentAt: this.state.message,
-       roomId: this.state.message,
+       sentAt: Date.now(),
+       roomId: 'test',
        })
        this.setState({message: ''});
      }
@@ -60,7 +60,7 @@ class MessageList extends Component {
                return (
                 <li key={i} >
                   {message.content} : {message.roomId} : {message.username} : {message.sentAt}
-                  
+
                 </li>
            )
         })
