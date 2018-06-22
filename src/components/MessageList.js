@@ -28,12 +28,12 @@ class MessageList extends Component {
    handleSubmit(e) {
      const messagesRef = this.props.firebase.database().ref(this.props.activeRoom);
      e.preventDefault();
-     if (this.state.content)
+     if (this.state.firebase)
      {
        this.messagesRef.push({
        username: this.state.username,
        content: this.state.message,
-       sentAt: this.state.firebase.database.ServerValue.TIMESTAMP,
+       sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
        roomId: this.state.roomId,
        })
        this.setState({content: ''});
@@ -53,7 +53,7 @@ class MessageList extends Component {
     return (
       <div className = 'messages'>
       <input type="text" value={this.state.content} onChange={this.handleChange.bind(this)} />
-      <form onSubmit={ (e) => this.handleSubmit(e) }>
+      <form onSubmit={ this.handleSubmit.bind(this) }>
       <button type="submit">Submit</button>
       <label>
         Messages:

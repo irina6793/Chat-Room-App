@@ -25,8 +25,8 @@ class App extends Component {
     this.setRoom = this.setRoom.bind(this);
   }
 
-  setRoom(roomId){
-      this.setState({activeRoom: roomId})
+  setRoom(room){
+      this.setState({activeRoom: room})
     }
 
   render() {
@@ -35,8 +35,8 @@ class App extends Component {
         <header className="App-header">
         <h1 className="Room-List">Welcome to Chat Rooms</h1>
         </header>
-        <RoomList firebase={firebase} activeRoom={this.state.activeRoom} />
-        <MessageList activeRoom={this.state.activeRoom} firebase={firebase} />
+        <RoomList firebase={firebase} activeRoom={this.state.activeRoom} setRoom={this.setRoom} />
+        <MessageList activeRoom={this.state.activeRoom} firebase={firebase} username="test" />
          </div>
      );
   }

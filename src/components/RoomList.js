@@ -43,7 +43,7 @@ class RoomList extends Component {
      return (
        <div className = 'rooms'>
        <input type="text" value={this.state.newRoomsName} onChange={this.handleChange.bind(this)} />
-       <form onSubmit={ (e) => this.handleSubmit(e) }>
+       <form onSubmit= { (e) => this.handleSubmit(e) }>
        <button type="submit">Submit</button>
        <label>
          Room:
