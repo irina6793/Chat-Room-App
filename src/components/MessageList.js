@@ -18,25 +18,20 @@ class MessageList extends Component {
 
    handleChange(e) {
      e.preventDefault();
-     this.setState({
-       username: this.props.username,
-       content: e.target.value,
-       sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
-     });
+     this.setState({message: e.target.value})
    }
 
    handleSubmit(e) {
-     const messagesRef = this.props.firebase.database().ref(this.props.activeRoom);
      e.preventDefault();
-     if (this.state.firebase)
+     if (this.props.firebase)
      {
        this.messagesRef.push({
        username: this.state.username,
        content: this.state.message,
-       sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
+       sentAt: new Date().toISOString().slice(0,10),
        roomId: this.state.roomId,
        })
-       this.setState({content: ''});
+       this.setState({message: ''});
      }
    }
 
