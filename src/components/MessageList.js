@@ -7,11 +7,11 @@ class MessageList extends Component {
     this.state = {
       username: '',
       messages: [],
-      message: ''
+      message: '',
+      roomId: ''
+
   }
-
-    this.handleChange = this.handleChange.bind(this);
-
+     this.handleChange = this.handleChange.bind(this);
     this.messagesRef = this.props.firebase.database().ref('messages');
 
   }
@@ -29,8 +29,8 @@ console.log(this.props.activeRoom)
        this.messagesRef.push({
        username: this.state.username,
        content: this.state.message,
-       sentAt: Date.now(),
-       roomId: 'test',
+       sentAt: this.state.firebase.database.ServerValue.TIMESTAMP,
+       roomId: this.state.roomId,
        })
        this.setState({message: ''});
      }
@@ -44,6 +44,8 @@ console.log(this.props.activeRoom)
    }
 
   render() {
+    const messages = this.state.messages.filter(message => this.state.roomId === message.roomId)
+
     return (
       <div className = 'messages'>
       <input type="text" value={this.state.message} onChange={this.handleChange.bind(this)} />
@@ -55,19 +57,19 @@ console.log(this.props.activeRoom)
        <span> {this.state.description} </span>
         </form>
         <ul>
-          {
-             this.state.messages.map((message, i) => {
-               return (
-                <li key={i} >
-                  {message.content} : {message.roomId} : {message.username} : {message.sentAt}
-
-                </li>
-           )
-        })
-    }
+         {
+            this.state.messages.map((message, i) => {
+              return (
+               <li key={i} >
+                 {message.content} : {message.roomId} : {message.username} : {message.sentAt}
+              </li>
+          )
+       })
+   }
          </ul>
        </div>
     )
 }
 }
+
 export default MessageList;
