@@ -43,7 +43,7 @@ class MessageList extends Component {
    }
 
    componentWillReceiveProps(nextProps){
-         let filteredMessages = this.state.messages.filter(message => nextProps.activeRoom.roomId === message.roomId);
+         let filteredMessages = this.state.messages.filter(messages => nextProps.activeRoom.roomId === messages.roomId);
          this.setState({filteredMessages: filteredMessages})
       };
 
@@ -60,10 +60,10 @@ class MessageList extends Component {
         </form>
         <ul>
          {
-            this.state.messages.map((message, i) => {
+            this.state.messages.map((filteredMessages, i) => {
               return (
                <li key={i} >
-                 {message.content} : {message.roomId} : {message.username} : {message.sentAt}
+                 {filteredMessages.content} : {filteredMessages.roomId} : {filteredMessages.username} : {filteredMessages.sentAt}
               </li>
           )
        })
