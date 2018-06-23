@@ -8,7 +8,8 @@ class MessageList extends Component {
       username: '',
       messages: [],
       message: '',
-      roomId: ''
+      roomId: '',
+      filteredMessages: ''
 
   }
      this.handleChange = this.handleChange.bind(this);
@@ -60,10 +61,10 @@ class MessageList extends Component {
         </form>
         <ul>
          {
-            this.state.messages.map((filteredMessages, i) => {
+            this.state.filteredMessages.map((message, i) => {
               return (
                <li key={i} >
-                 {filteredMessages.content} : {filteredMessages.roomId} : {filteredMessages.username} : {filteredMessages.sentAt}
+                 {message.content} : {message.roomId} : {message.username} : {message.sentAt}
               </li>
           )
        })
