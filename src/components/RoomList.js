@@ -46,7 +46,7 @@ class RoomList extends Component {
        <form onSubmit= { (e) => this.handleSubmit(e) }>
        <button type="submit">Submit</button>
        <label>
-         Room:
+         Room: {this.props.activeRoom.name}
         </label>
          <span> {this.state.description} </span>
        </form>

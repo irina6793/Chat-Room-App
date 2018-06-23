@@ -42,9 +42,12 @@ class MessageList extends Component {
            });
    }
 
-  render() {
-    const messages = this.state.messages.filter(message => this.state.roomId === message.roomId)
+   componentWillReceiveProps(nextProps){
+         let filteredMessages = this.state.messages.filter(message => nextProps.activeRoom.roomId === message.roomId);
+         this.setState({filteredMessages: filteredMessages})
+      };
 
+  render() {
     return (
       <div className = 'messages'>
       <input type="text" value={this.state.content} onChange={this.handleChange.bind(this)} />
