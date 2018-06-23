@@ -9,7 +9,7 @@ class MessageList extends Component {
       messages: [],
       message: '',
       roomId: '',
-      filteredMessages: ''
+      filteredMessages: []
 
   }
      this.handleChange = this.handleChange.bind(this);
@@ -30,7 +30,7 @@ class MessageList extends Component {
        username: this.state.username,
        content: this.state.message,
        sentAt: new Date().toISOString().slice(0,10),
-       roomId: this.state.roomId,
+       roomId: this.props.activeRoom.key,
        })
        this.setState({message: ''});
      }
@@ -41,11 +41,16 @@ class MessageList extends Component {
         const messages = snapshot.val();
         this.setState({ messages: this.state.messages.concat( messages ) });
            });
+        let filteredMessages = this.state.messages.filter(messages => this.props.activeRoom.roomId === messages.roomId);
+        this.setState({filteredMessages: filteredMessages});
    }
 
    componentWillReceiveProps(nextProps){
-         let filteredMessages = this.state.messages.filter(messages => nextProps.activeRoom.roomId === messages.roomId);
-         this.setState({filteredMessages: filteredMessages})
+     let filteredMessages = this.state.messages.filter(messages => nextProps.activeRoom.roomId === messages.roomId);
+     this.setState({filteredMessages: filteredMessages});
+
+         this.setState({filteredMessages: filteredMessages});
+         console.log(this.state.filteredMessages)
       };
 
   render() {
