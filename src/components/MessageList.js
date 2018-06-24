@@ -52,8 +52,8 @@ class MessageList extends Component {
 
   render() {
     return (
-      <h1>{this.props.activeRoom}>
       <div className = 'messages'>
+      <h1>{this.props.activeRoom.name}</h1>
       <input type="text" value={this.state.content} onChange={this.handleChange.bind(this)} />
       <form onSubmit={ this.handleSubmit.bind(this) }>
       <button type="submit">Submit</button>
@@ -64,7 +64,7 @@ class MessageList extends Component {
         </form>
         <ul>
          {
-            this.state.messages.filter(message => this.props.activeRoom.roomId === message.roomId).map((message, i) => {
+            this.state.messages.filter(message => this.props.activeRoom.key === message.roomId).map((message, i) => {
               return (
                <li key={i} >
                  {message.content} : {message.roomId} : {message.username} : {message.sentAt}
@@ -75,7 +75,7 @@ class MessageList extends Component {
    }
          </ul>
        </div>
-       </h1>
+
     )
 }
 }
