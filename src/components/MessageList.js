@@ -64,7 +64,7 @@ class MessageList extends Component {
         </form>
         <ul>
          {
-            this.state.messages.filter(message => this.props.activeRoom.key === message.roomId).map((message, i) => {
+            this.state.messages.filter(message => this.props.activeRoom.roomId === message.roomId).map((message, i) => {
               return (
                <li key={i} >
                  {message.content} : {message.roomId} : {message.username} : {message.sentAt}

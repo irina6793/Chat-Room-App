@@ -34,6 +34,7 @@ class RoomList extends Component {
   componentDidMount() {
        this.roomsRef.on('child_added', snapshot => {
        const rooms = snapshot.val();
+       rooms.key = snapshot.key;
        this.setState({ rooms: this.state.rooms.concat( rooms ) });
     });
 
