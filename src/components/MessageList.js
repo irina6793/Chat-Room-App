@@ -41,20 +41,18 @@ class MessageList extends Component {
         const messages = snapshot.val();
         this.setState({ messages: this.state.messages.concat( messages ) });
            });
-        let filteredMessages = this.state.messages.filter(messages => this.props.activeRoom.roomId === messages.roomId);
-        this.setState({filteredMessages: filteredMessages});
+        console.log('Active room:  ', this.props.activeRoom.roomId);
    }
 
    componentWillReceiveProps(nextProps){
-     let filteredMessages = this.state.messages.filter(messages => nextProps.activeRoom.roomId === messages.roomId);
+     let filteredMessages = this.state.messages.filter(message => nextProps.activeRoom.roomId === message.roomId);
      this.setState({filteredMessages: filteredMessages});
-
-         this.setState({filteredMessages: filteredMessages});
-         console.log(this.state.filteredMessages)
+     console.log(this.state.filteredMessages)
       };
 
   render() {
     return (
+      <h1>{this.props.activeRoom}>
       <div className = 'messages'>
       <input type="text" value={this.state.content} onChange={this.handleChange.bind(this)} />
       <form onSubmit={ this.handleSubmit.bind(this) }>
@@ -66,16 +64,18 @@ class MessageList extends Component {
         </form>
         <ul>
          {
-            this.state.filteredMessages.map((message, i) => {
+            this.state.messages.filter(message => this.props.activeRoom.roomId === message.roomId).map((message, i) => {
               return (
                <li key={i} >
                  {message.content} : {message.roomId} : {message.username} : {message.sentAt}
               </li>
           )
        })
+
    }
          </ul>
        </div>
+       </h1>
     )
 }
 }
