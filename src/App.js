@@ -3,6 +3,7 @@ import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
+import User from './components/User';
 
 var config = {
     apiKey: "AIzaSyAznF2GHVzfH2N1-mf_-wB1JJuO1e3H8QY",
@@ -20,15 +21,28 @@ class App extends Component {
     this.state ={
       message: [],
       roomId: [],
-      activeRoom: ''
+      activeRoom: '',
+      user: null
+
     }
     this.setRoom = this.setRoom.bind(this);
+    this.setUser = this.setUser.bind(this);
   }
 
   setRoom(room){
       this.setState({activeRoom: room})
       console.log(this.state.activeRoom.key)
-    }
+  }
+
+  setUser(user){
+    console.log("setUser was called.");
+    this.setState({ user : user})
+    if (user) {
+       console.log("set user to " + user.displayName);
+     } else {
+       console.log("null user was provided.");
+     }
+}
 
   render() {
     return (
@@ -38,6 +52,7 @@ class App extends Component {
         </header>
         <RoomList firebase={firebase} activeRoom={this.state.activeRoom} setRoom={this.setRoom} />
         <MessageList activeRoom={this.state.activeRoom} firebase={firebase} username="test" />
+        <User firebase={firebase} activeRoom={this.state.activeRoom} setUser={this.setUser} />
          </div>
      );
   }
