@@ -6,16 +6,25 @@ class User extends Component {
     this.state = {
       username: '',
       emails: [],
-      user: null
+      user: ''
   }
 }
 
 login(e) {
-  console.log("Showing popup...");
   e.preventDefault();
+  const self = this
   const provider = new this.props.firebase.auth.GoogleAuthProvider();
-  this.props.firebase.auth().signInWithPopup( provider );
-  console.log("Logged in?");
+  this.props.firebase.auth().signInWithPopup( provider ).then(function(result){
+  const user = result.user;
+  console.log(self)
+  self.props.setUser(user)
+}).catch(function(error) {
+   console.log("Show error if this is wrong" , error.code)
+   console.log("Show error message", error.message)
+   console.log("Show error email", error.email)
+   console.log("Show error crediential", error.crediential)
+});
+
 }
 
 logOut(){
@@ -29,20 +38,19 @@ componentDidMount() {
 }
 
 render() {
-
   return (
-    <div className = "container">
-    <h1>Sign-In</h1>
+    <div>
+    <span>{this.props.user ? this.props.user.displayName : "Guest"}</span>
     <form onSubmit ={this.login.bind(this )}>
-    <button type="submit">Submit</button>
-    </form>
-    <h2>Sign-Out</h2>
-    <form onSubmit={ this.logOut.bind(this) }>
-      <button type="submit">Submit</button>
-    </form>
-    </div>
+   <button type="submit">Sign-In</button>
+   </form>
+   <form onSubmit={ this.logOut.bind(this) }>
+   <button type="submit">Sign-Out</button>
+   </form>
+   </div>
+
   )
-}
+  }
 }
 
 export default User;

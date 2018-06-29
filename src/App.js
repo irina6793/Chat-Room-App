@@ -22,7 +22,7 @@ class App extends Component {
       message: [],
       roomId: [],
       activeRoom: '',
-      user: null
+      user: ''
 
     }
     this.setRoom = this.setRoom.bind(this);
@@ -52,7 +52,7 @@ class App extends Component {
         </header>
         <RoomList firebase={firebase} activeRoom={this.state.activeRoom} setRoom={this.setRoom} />
         <MessageList activeRoom={this.state.activeRoom} firebase={firebase} username="test" />
-        <User firebase={firebase} activeRoom={this.state.activeRoom} setUser={this.setUser} />
+        <User firebase={firebase} activeRoom={this.state.activeRoom} setUser={this.setUser} user={this.state.user} />
          </div>
      );
   }
