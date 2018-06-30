@@ -28,7 +28,7 @@ class MessageList extends Component {
      {
        this.setState({message: ''});
        this.messagesRef.push({
-       username: this.state.username,
+       username: this.props.user.displayName,
        content: this.state.message,
        sentAt: new Date().toISOString().slice(0,10),
        roomId: this.props.activeRoom.key,

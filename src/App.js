@@ -51,7 +51,7 @@ class App extends Component {
         <h1 className="Room-List">Welcome to Chat Rooms</h1>
         </header>
         <RoomList firebase={firebase} activeRoom={this.state.activeRoom} setRoom={this.setRoom} />
-        <MessageList firebase={firebase} activeRoom={this.state.activeRoom} setUser={this.setUser} />
+        <MessageList firebase={firebase} activeRoom={this.state.activeRoom} user={this.state.user} setUser={this.setUser} />
         <User firebase={firebase} activeRoom={this.state.activeRoom} setUser={this.setUser} user={this.state.user} />
          </div>
      );
