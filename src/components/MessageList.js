@@ -26,15 +26,15 @@ class MessageList extends Component {
      e.preventDefault();
      if (this.props.firebase)
      {
+       this.setState({message: ''});
        this.messagesRef.push({
        username: this.state.username,
        content: this.state.message,
        sentAt: new Date().toISOString().slice(0,10),
        roomId: this.props.activeRoom.key,
        })
-       this.setState({message: ''});
-     }
    }
+}
 
    componentDidMount() {
         this.messagesRef.on('child_added', snapshot => {
