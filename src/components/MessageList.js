@@ -33,6 +33,7 @@ class MessageList extends Component {
        sentAt: new Date().toISOString().slice(0,10),
        roomId: this.props.activeRoom.key,
        })
+
    }
 }
 
@@ -54,7 +55,7 @@ class MessageList extends Component {
     return (
       <div className = 'messages'>
       <h1>{this.props.activeRoom.name}</h1>
-      <input type="text" value={this.state.content} onChange={this.handleChange.bind(this)} />
+      <input type="text" value={this.state.message} onChange={this.handleChange.bind(this)} />
       <form onSubmit={ this.handleSubmit.bind(this) }>
       <button type="submit">Submit</button>
       <label>
