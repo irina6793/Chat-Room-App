@@ -46,10 +46,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">The Chat Room</h1>
-          <h1 className="Room-List">Welcome to The Chat Room</h1>
+        <header>
+          <h1>The Chat Room</h1>
+          <h2>Welcome to The Chat Room</h2>
         </header>
         <RoomList
           firebase={firebase}
