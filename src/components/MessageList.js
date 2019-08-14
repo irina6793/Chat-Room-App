@@ -50,8 +50,9 @@ class MessageList extends Component {
 
   render() {
     return (
-      <div className="messages">
-        <h1>{this.props.activeRoom.name}</h1>
+      <div className="message">
+        <span className="message_name">{this.props.activeRoom.name}</span>
+        {this.props.activeRoom.message}
         <input
           type="text"
           value={this.state.message}

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import firebase from "firebase";
 
 class User extends Component {
   constructor(props) {
@@ -8,6 +9,10 @@ class User extends Component {
       emails: [],
       user: ""
     };
+    this.messageRef = firebase
+      .database()
+      .ref()
+      .child("messages");
   }
 
   login(e) {
