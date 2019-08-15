@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import * as firebase from "firebase";
 
 class MessageList extends Component {
   constructor(props) {
@@ -6,9 +7,7 @@ class MessageList extends Component {
     this.state = {
       username: "",
       messages: [],
-      message: "",
-      roomId: "",
-      filteredMessages: []
+      newMessage: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.messagesRef = this.props.firebase.database().ref("messages");
