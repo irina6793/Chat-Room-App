@@ -5,30 +5,12 @@ class MessageList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
       messages: [],
-      newMessage: ""
+      newMessages: ""
     };
-    this.handleChange = this.handleChange.bind(this);
     this.messagesRef = this.props.firebase.database().ref("messages");
-  }
-
-  handleChange(e) {
-    e.preventDefault();
-    this.setState({ message: e.target.value });
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    if (this.props.firebase) {
-      this.setState({ message: "" });
-      this.messagesRef.push({
-        username: this.props.user.displayName,
-        content: this.state.message,
-        sentAt: new Date().toISOString().slice(0, 10),
-        roomId: this.props.activeRoom.key
-      });
-    }
+    this.createMessage = this.createMessage.bind(this);
+    this.convertTimeStamp = this.convertTimeStamp.bind(this);
   }
 
   componentDidMount() {
@@ -36,20 +18,58 @@ class MessageList extends Component {
       const messages = snapshot.val();
       this.setState({ messages: this.state.messages.concat(messages) });
     });
-    console.log("Active room:  ", this.props.activeRoom.roomId);
   }
 
-  componentWillReceiveProps(nextProps) {
-    let filteredMessages = this.state.messages.filter(
-      message => nextProps.activeRoom.roomId === message.roomId
-    );
-    this.setState({ filteredMessages: filteredMessages });
-    console.log(this.state.filteredMessages);
+  convertTimeStamp(timeStamp) {
+    var d = new Date(timeStamp),
+      yyyy = d.getFullYear(),
+      mm = ("0" + (d.getMonth() + 1)).slice(-2),
+      dd = ("0" + d.getDate()).slice(-2),
+      hh = d.getHours(),
+      h = hh,
+      min = ("0" + d.getMinutes()).slice(-2),
+      ampm = "AM",
+      time;
+
+    if (hh > 12) {
+      h = hh - 12;
+      ampm = "PM";
+    } else if (hh === 12) {
+      h = 12;
+      ampm = "PM";
+    } else if (hh === 0) {
+      h = 12;
+    }
+    time = yyyy + "-" + mm + "-" + dd + ", " + h + ":" + min + " " + ampm;
+    return time;
+  }
+
+  createMessage(e) {
+    e.preventDefault();
+    if (!this.props.activeRoom || !this.state.messages) {
+      return;
+    }
+    this.setState({ messages: [...this.state.newMessages], newMessages: "" });
+    if (this.props.user !== null) {
+      this.messagesRef.push({
+        content: this.state.newMessages,
+        sentAt: firebase.database.ServerValue.TIMESTAMP,
+        roomId: this.props.activeRoom.key,
+        username: this.props.user.displayName || "guest"
+      });
+    } else {
+      alert("please sign in");
+    }
+  }
+
+  handleMessageChange(e) {
+    e.preventDefault();
+    this.setState({ newMessages: e.target.value });
   }
 
   render() {
     return (
-      <div className="message">
+      <section className="messages">
         <span className="message_name">{this.props.activeRoom.name}</span>
         {this.props.activeRoom.message}
         <input
@@ -73,7 +93,7 @@ class MessageList extends Component {
               );
             })}
         </ul>
-      </div>
+      </section>
     );
   }
 }
