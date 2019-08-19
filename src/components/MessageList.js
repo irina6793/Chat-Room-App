@@ -95,7 +95,7 @@ class MessageList extends Component {
             <div className="container">
               <div className="col-sm-9">
                 <div className="createMessages">
-                  <p>Messages!</p>
+                  <p>Messages:</p>
                   <form onSubmit={this.createMessages}>
                     <input
                       type="text"
