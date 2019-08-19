@@ -70,29 +70,45 @@ class MessageList extends Component {
   render() {
     return (
       <section className="messages">
-        <span className="message_name">{this.props.activeRoom.name}</span>
-        {this.props.activeRoom.message}
-        <input
-          type="text"
-          value={this.state.message}
-          onChange={this.handleChange.bind(this)}
-        />
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <button type="submit">Submit</button>
-          <label>Messages:</label>
-          <span> {this.state.description} </span>
-        </form>
-        <ul>
-          {this.state.messages
-            .filter(message => this.props.activeRoom.key === message.roomId)
-            .map((message, i) => {
-              return (
-                <li key={i}>
-                  {message.content} : {message.username} : {message.sentAt}
-                </li>
-              );
-            })}
-        </ul>
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-9">
+              <div className="jumbotron">
+                <div id="messagesListName">
+                  <ul>
+                    {this.state.messages
+                      .filter(
+                        message => message.roomId === this.props.activeRoom.key
+                      )
+                      .map((message, index) => (
+                        <li key={index}>
+                          {message.content}{" "}
+                          {this.convertTimestamp(message.sentAt)}{" "}
+                          {message.username}
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="container">
+              <div className="col-sm-9">
+                <div className="createMessages">
+                  <p>Messages!</p>
+                  <form onSubmit={this.createMessages}>
+                    <input
+                      type="text"
+                      value={this.state.newMessages}
+                      onChange={e => this.handleMessageChange(e)}
+                    />
+                    <input type="submit" id="submit" name="submission" />
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     );
   }
