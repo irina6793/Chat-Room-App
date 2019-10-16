@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import * as firebase from "firebase";
-import Baratunde from "../baratunde.svg";
-import ConanOBrian from "../conanobrien.jpg";
-import MaryMeeker from "../marymeeker.jpg";
 
 class MessageList extends Component {
   constructor(props) {
